@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Contador</title>
+</head>
+
+<body>
+
+
+    <header>
+        <div class="center">
+            
+            <p id="dias">Dias</p>
+            <p id="horas">Horas</p>
+            <p id="minutos">Minutos</p>
+            <p id="segundos">Segundos</p>
+
+
+        </div>
+
+        <div class="ano">
+            <h2>Ano Atual</h2>
+        </div>
+        <img src="img/new-years-eve-1953253_1920.jpg" alt="">
+    </header>
+
+    <script>
+        nextYear = new Date().getFullYear() + 1;
+        var anoNovo = new Date(`January 01 ${nextYear} 00:00:00`);
+
+        const contador = () => {
+            const tempoCorrente = new Date();
+
+            const diferenca = anoNovo - tempoCorrente;
+
+            const days = Math.floor(diferenca / 1000 / 60 / 60 / 24);
+            const minutos = Math.floor(diferenca / 1000 / 60 / 60) % 24;
+            const hours = Math.floor(diferenca / 1000 / 60) % 60;
+            const seconds = Math.floor(diferenca / 1000) % 60;
+
+            document.getElementById('dias').innerHTML = `${days}<small>Dias<small/>`;
+            document.getElementById('minutos').innerHTML = `${minutos}<small>Minutos<small/>`;
+            document.getElementById('horas').innerHTML = `${hours}<small>Horas<small/>`;
+            document.getElementById('segundos').innerHTML = `${seconds}<small>Segundos<small/>`;
+
+        }
+
+        setInterval(contador, 1000);
+
+        document.querySelector('h2').innerHTML = nextYear;
+    </script>
+</body>
+
+</html>
